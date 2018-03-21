@@ -85,11 +85,11 @@ public class UserService {
             Profile profile = profileJpaRepository.findById(profileReq.getId());
             if (!Objects.isNull(profile)) {
                 profile.setId(profileReq.getId());
-                profile.setName(profileReq.getName());
-                profile.setEmail(profileReq.getEmail());
-                profile.setPhone(profileReq.getPhone());
-                profile.setTeam(profileReq.getTeam());
-                profile.setPhoto(profileReq.getPhoto());
+                profile.setName(Objects.isNull(profileReq.getName()) ? profile.getName() : profileReq.getName());
+                profile.setEmail(Objects.isNull(profileReq.getEmail()) ? profile.getEmail() : profileReq.getEmail());
+                profile.setPhone(Objects.isNull(profileReq.getPhone()) ? profile.getPhone() : profileReq.getPhone());
+                profile.setTeam(Objects.isNull(profileReq.getTeam()) ? profile.getTeam() : profileReq.getTeam());
+                profile.setPhoto(Objects.isNull(profileReq.getPhoto()) ? profile.getPhoto() : profileReq.getPhoto());
 
                 profile = profileJpaRepository.save(profile);
 
